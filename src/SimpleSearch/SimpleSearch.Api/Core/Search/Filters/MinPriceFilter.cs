@@ -2,11 +2,11 @@ using Nest;
 
 namespace SimpleSearch.Api.Core.Search.Filters
 {
-    public class PriceFilter : IFilter
+    public class MinPriceFilter : IFilter
     {
         private readonly double _price;
 
-        public PriceFilter(double price)
+        public MinPriceFilter(double price)
         {
             this._price = price;
         }
@@ -16,7 +16,7 @@ namespace SimpleSearch.Api.Core.Search.Filters
             searchRequest.Query &= new QueryContainer(new NumericRangeQuery
             {
                 Field = "taxful_total_price",
-                GreaterThan = _price,
+                GreaterThanOrEqualTo = _price,
                 Name = "PriceFilter"
             });
         }

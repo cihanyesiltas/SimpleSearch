@@ -24,7 +24,7 @@ namespace SimpleSearch.Api.Services
         {
             var filters = new FilterBuilder()
                 .Add(new CustomerNameFilterMapper(request.CustomerName))
-                .Add(new PriceFilterMapper(request.Price))
+                .Add(new MinPriceFilterMapper(request.MinPrice))
                 .ToFilterList();
 
             var searchRequest = new SearchRequest

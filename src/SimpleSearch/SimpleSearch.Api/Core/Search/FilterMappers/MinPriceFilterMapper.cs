@@ -2,11 +2,11 @@ using SimpleSearch.Api.Core.Search.Filters;
 
 namespace SimpleSearch.Api.Core.Search.FilterMappers
 {
-    public class PriceFilterMapper : IPropertyFilterMapper<double>
+    public class MinPriceFilterMapper : IPropertyFilterMapper<double>
     {
         private readonly double _price;
 
-        public PriceFilterMapper(double price)
+        public MinPriceFilterMapper(double price)
         {
             _price = price;
         }
@@ -15,7 +15,7 @@ namespace SimpleSearch.Api.Core.Search.FilterMappers
         {
             if (_price > 0)
             {
-                return new PriceFilter(_price);
+                return new MinPriceFilter(_price);
             }
 
             return null;

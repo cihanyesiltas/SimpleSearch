@@ -16,6 +16,8 @@ services:
     cap_add:
       - ALL
     privileged: true
+    networks:
+      - esnetwork
     ports:
       - 9200:9200
       - 9300:9300
@@ -34,10 +36,21 @@ services:
         hard: -1
     cap_add:
       - ALL
+    networks:
+      - esnetwork
     depends_on:
-      - elasticsearch     
+      - elasticsearch
   simplesearch-api:
     build: .
     restart: always
+    environment:
+      - elasticsearch:url=http://elasticsearch:9200/
+    networks:
+      - esnetwork
     ports:
       - 5000:80
+    depends_on:
+      - elasticsearch
+networks:
+  esnetwork:
+    driver: bridge 
