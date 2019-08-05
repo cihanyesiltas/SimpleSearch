@@ -23,14 +23,14 @@ namespace SimpleSearch.Api.Services
         public IEnumerable<OrderSearchResponse> Search(OrderSearchRequest request)
         {
             var filters = new FilterBuilder()
-                .Add(new CustomerNameFilterMapper(request.CustomerName))
-                .Add(new MinPriceFilterMapper(request.MinPrice))
+                .Add(new CustomerNameFilterHandler(request.CustomerName))
+                .Add(new MinPriceFilterHandler(request.MinPrice))
                 .ToFilterList();
 
             var searchRequest = new SearchRequest
             {
-                From = 0,
-                Size = 10
+                From = request.From,
+                Size = request.Size
             };
 
             foreach (var filter in filters)

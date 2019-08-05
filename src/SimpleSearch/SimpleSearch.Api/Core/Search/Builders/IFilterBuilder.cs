@@ -6,7 +6,7 @@ namespace SimpleSearch.Api.Core.Search.Builders
 {
     public interface IFilterBuilder
     {
-        IFilterBuilder Add<T>(IPropertyFilterMapper<T> mapper);
+        IFilterBuilder Add<T>(IPropertyFilterHandler<T> mapper);
         List<IFilter> ToFilterList();
     }
 }

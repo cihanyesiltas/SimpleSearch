@@ -14,7 +14,7 @@ namespace SimpleSearch.Api.Core.Search.Builders
         }
         
         
-        public IFilterBuilder Add<T>(IPropertyFilterMapper<T> mapper)
+        public IFilterBuilder Add<T>(IPropertyFilterHandler<T> mapper)
         {
             var filter = mapper.GetFilter();
             if (filter != null)
